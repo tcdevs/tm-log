@@ -1,0 +1,23 @@
+{
+  "name": "tm-log",
+  "version": "0.0.1",
+  "description": "a simple yet versatile commandline logger with a prefixed timestamp or modulename.",
+  "main": "tm-log.js",
+  "scripts": {
+    "test": "test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tcdevs/tm-log.git"
+  },
+  "keywords": [
+    "node",
+    "log"
+  ],
+  "author": "tcdevs",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tcdevs/tm-log/issues"
+  },
+  "homepage": "https://github.com/tcdevs/tm-log#readme"
+}
