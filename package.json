@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/tcdevs/tm-log/issues"
   },
-  "homepage": "https://github.com/tcdevs/tm-log#readme"
+  "homepage": "https://github.com/tcdevs/tm-log#readme",
+  "dependencies": {
+    "chalk": "^1.1.1"
+  }
 }
