@@ -6,15 +6,15 @@
 var pkg = require('./package.json'),
     chalk = require('chalk');
 
-var name = pkg.name || 'custom_name',
+var mod = require('./tm-log.json'),
     now = new Date(),
     hrs = now.getHours(),
     mins = now.getMinutes(),
     secs = now.getSeconds(),
-    time = ( ( hrs < 10 ) ? '0' + hrs : hrs )  + ':' + 
+    time = ( ( hrs < 10 )  ? '0' + hrs : hrs ) + ':' + 
            ( ( mins < 10 ) ? '0' + mins : mins ) + ':' + 
            ( ( secs < 10 ) ? '0' + secs : secs ),
-    nameBased = function(c){ return '[' + chalk[c](name) + '] '; },
+    nameBased = function(c){ return '[' + chalk[c]( mod.name ) + '] '; },
     timeBased = function(c){ return '[' + chalk[c]( time ) + '] '; };
 
 function log(){
@@ -57,8 +57,22 @@ function Warning(){
   console.log.apply(console, arguments);
 }
 
-function JSON(){
-  console.log(JSON.stringify(arguments, '  ', null));
+function json(){
+  console.log(JSON.stringify(arguments[0], null, "  "));
+}
+
+function setName(name){
+  fs = require('fs');
+
+  var cfg = { "name": name};
+
+  var root_path = __dirname.slice(0, -19);
+  console.log('root_path: ' + root_path);
+
+  fs.writeFile(__dirname +'/tm-log.json', JSON.stringify(cfg),function(){
+    console.log('cfg saved!');
+    mod = require('./tm-log.json')
+  });
 }
 
 module.exports = log;
@@ -69,4 +83,5 @@ module.exports.Log = Log;
 module.exports.Error = Error;
 module.exports.Warning = Warning;
 module.exports.Info = Info;
-module.exports.json = JSON;
+module.exports.json = json;
+module.exports.setName = setName;
